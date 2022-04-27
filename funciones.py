@@ -51,7 +51,7 @@ def eval_dict(fun, X, Y):
             return (iny, False)
     return (iny, True)
 
-def eval(X, Y, eval_fun = eval_dict):
+def eval(X, Y, imprimir, eval_fun = eval_dict):
     '''
         Cuenta las funciones sobreyectivas y/o inyectivas para dominio X y contradominio Y
     '''
@@ -63,12 +63,12 @@ def eval(X, Y, eval_fun = eval_dict):
         iny, sob = eval_fun(fun, X, Y)
         cnt_iny += iny
         cnt_sob += sob
-        
-        if sob or iny:
-            txt = ""
-            if sob : txt += "- sobreyectiva "
-            if iny : txt += "- inyectiva "
-            print(fun, txt)
+        if imprimir :
+            if sob or iny:
+                txt = ""
+                if sob : txt += "- sobreyectiva "
+                if iny : txt += "- inyectiva "
+                print(fun, txt)
             
     
     return cnt_iny, cnt_sob
