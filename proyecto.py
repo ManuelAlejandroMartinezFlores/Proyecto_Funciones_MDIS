@@ -14,9 +14,12 @@ while True:
         print("Ingrese cardinalidad de contradominio: (0 < Y < 9)")
         Y = int(input())
         assert 0 < X < 9
+        print("Desea imprimir las funciones? (0 - No / 1 - Si)")
+        imprimir = int(input())
+        assert -1 < imprimir < 2 
         break
     except:
-        pass
+        print("Ingrese valores válidos")
 
 # Si ambos son 1, solo existe 1 de cada clase
 if X == 1 and Y == 1:
@@ -34,7 +37,7 @@ elif Y == 1:
     print("Inyectivas: ", 0)
 # En caso contrario, se evalua
 else:   
-    cnt_iny, cnt_sob = eval(X, Y)
+    cnt_iny, cnt_sob = eval(X, Y, imprimir)
     print("Sobreyectivas: ", cnt_sob)
     print("Inyectivas: ", cnt_iny)
     
