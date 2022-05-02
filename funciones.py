@@ -36,7 +36,8 @@ def eval_dict(fun, X, Y):
     '''
     d = {}
     iny = True
-    cnt = Y
+    total_y = Y
+    
     for y in fun:
         # Si algún elemento del contradominio se repite, no es inyectiva
         if y in d:
@@ -46,9 +47,12 @@ def eval_dict(fun, X, Y):
             iny = False
         else:
             d[y] = 0
-            cnt = cnt - 1
+            total_y = total_y - 1
+
             
-    return (iny, cnt == 0)
+    return (iny, total_y == 0)
+
+
 
 def eval(X, Y, imprimir, eval_fun = eval_dict):
     '''
