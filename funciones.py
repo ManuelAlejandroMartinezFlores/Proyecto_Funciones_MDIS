@@ -36,7 +36,7 @@ def eval_dict(fun, X, Y):
     '''
     d = {}
     iny = True
-    sob = True
+    cnt = Y
     for y in fun:
         # Si algún elemento del contradominio se repite, no es inyectiva
         if y in d:
@@ -44,12 +44,11 @@ def eval_dict(fun, X, Y):
             if Y > X :  
                 return (False, False)
             iny = False
-        d[y] = 0
-    for y in range(Y):
-        # Si algún elemento del contradominio no aparece, no es sobreyectiva
-        if str(y) not in d:
-            return (iny, False)
-    return (iny, True)
+        else:
+            d[y] = 0
+            cnt = cnt - 1
+            
+    return (iny, cnt == 0)
 
 def eval(X, Y, imprimir, eval_fun = eval_dict):
     '''
@@ -70,5 +69,6 @@ def eval(X, Y, imprimir, eval_fun = eval_dict):
                 if iny : txt += "- inyectiva "
                 print(fun, txt)
             
-    
+    if imprimir : print("*Nota: las funciones están representadas como una cadena donde la posición" +
+                        " representa un elemento del dominio y el número en ella un elemento del contradominio*")
     return cnt_iny, cnt_sob
