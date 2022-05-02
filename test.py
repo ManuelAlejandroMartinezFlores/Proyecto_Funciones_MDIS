@@ -13,7 +13,7 @@ def test_eval(eval_fun):
     t = time.time()
     for X in range(2, 9):
         for Y in range(2, 9):
-            eval(X, Y, eval_fun)
+            eval(X, Y, False ,eval_fun)
     return time.time() - t
 
 print("Mat")
